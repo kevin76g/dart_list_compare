@@ -1,16 +1,8 @@
 # dart_list_compare
 
-A new Flutter project.
+Sample code with how to compare with list<Map> type data.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This sample code is referred from medium article.
+https://medium.com/@kevin76g/flutter%E3%81%AElist-map-%E5%9E%8B%E3%81%AE%E8%A6%81%E7%B4%A0%E3%82%92%E6%AF%94%E8%BC%83%E3%81%99%E3%82%8B-ffc281a50796
