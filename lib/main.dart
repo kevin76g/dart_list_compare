@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
@@ -31,36 +30,30 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+//リストの値を変化させて何度か試してみてください
+const List listMap1 = [
+  {'id': 1, 'table': 'user'},
+  {'id': 2, 'table': 'car'},
+  {'id': 3, 'table': 'bike'}
+];
+const List listMap2 = [
+  {'id': 2, 'table': 'car'},
+  {'id': 3, 'table': 'bike'},
+  {'id': 1, 'table': 'user'}
+];
+
+bool listCompare(List list1, List list2) {
+  bool _isListEqual;
+
+  Function unOrdDeepEq = const DeepCollectionEquality.unordered().equals;
+  _isListEqual = unOrdDeepEq(list1, list2);
+
+  return _isListEqual;
+}
+
 class _MyHomePageState extends State<MyHomePage> {
-  bool listCompare() {
-    bool _isListEqual;
-
-    //リストの値を変化させて何度か試してみてください
-    List listMap1 = [
-      {'a': 1, 'b': 1},
-      {'a': 2, 'b': 2},
-      {'a': 3, 'b': 3}
-    ];
-    List listMap2 = [
-      {'a': 3, 'b': 3},
-      {'a': 2, 'b': 2},
-      {'a': 1, 'b': 1}
-    ];
-
-    Function unOrdDeepEq = const DeepCollectionEquality.unordered().equals;
-    _isListEqual = unOrdDeepEq(listMap1, listMap2);
-
-    if (kDebugMode) {
-      print(_isListEqual);
-    } //=>true
-
-    return _isListEqual;
-  }
-
   @override
   Widget build(BuildContext context) {
-    var _isListEqual = listCompare();
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -69,23 +62,28 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(
+              'List 1 :\n' + listMap1.toString(),
+            ),
+            const SizedBox(
+              height: 30.0,
+            ),
+            Text(
+              'List 2 :\n' + listMap2.toString(),
+            ),
+            const SizedBox(
+              height: 30.0,
+            ),
             const Text(
               'List comparison result is:',
             ),
             Text(
-              _isListEqual.toString(),
+              listCompare(listMap1, listMap2).toString(),
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     _isListEqual = listCompare();
-      //   },
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
